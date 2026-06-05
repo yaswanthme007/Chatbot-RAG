@@ -25,7 +25,7 @@ with open("styles.css") as f:
 st.markdown("""
 <div class="chat-header">
     <div class="header-brand">
-        <div class="brand-icon">◆</div>
+        <div class="brand-icon">AI</div>
         <div class="brand-text">
             <span class="brand-name">RAG Intelligence</span>
             <span class="brand-sub">Groq · LLaMA 3</span>
@@ -71,7 +71,7 @@ if "doc_count" not in st.session_state:
 # Sidebar
 # ------------------------
 with st.sidebar:
-    st.markdown('<div class="sidebar-title">◆ &nbsp;RAG Intelligence</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sidebar-title">RAG Intelligence</div>', unsafe_allow_html=True)
 
     st.markdown('<div class="sidebar-section-label">Model</div>', unsafe_allow_html=True)
     model = st.selectbox(
@@ -147,8 +147,7 @@ with st.sidebar:
 # Chat History
 # ------------------------
 for msg in st.session_state.messages:
-    avatar = "🤖" if msg["role"] == "assistant" else "🧑"
-    with st.chat_message(msg["role"], avatar=avatar):
+    with st.chat_message(msg["role"]):
         st.markdown(msg["content"])
 
 # ------------------------
@@ -156,10 +155,10 @@ for msg in st.session_state.messages:
 # ------------------------
 if prompt := st.chat_input("Message RAG Intelligence…"):
     st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user", avatar="🧑"):
+    with st.chat_message("user"):
         st.markdown(prompt)
 
-    with st.chat_message("assistant", avatar="🤖"):
+    with st.chat_message("assistant"):
         placeholder = st.empty()
 
         system_msg = {
