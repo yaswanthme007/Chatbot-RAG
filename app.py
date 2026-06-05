@@ -147,7 +147,7 @@ with st.sidebar:
 # Chat History
 # ------------------------
 for msg in st.session_state.messages:
-    avatar = "◆" if msg["role"] == "assistant" else "○"
+    avatar = "🤖" if msg["role"] == "assistant" else "🧑"
     with st.chat_message(msg["role"], avatar=avatar):
         st.markdown(msg["content"])
 
@@ -156,10 +156,10 @@ for msg in st.session_state.messages:
 # ------------------------
 if prompt := st.chat_input("Message RAG Intelligence…"):
     st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user", avatar="○"):
+    with st.chat_message("user", avatar="🧑"):
         st.markdown(prompt)
 
-    with st.chat_message("assistant", avatar="◆"):
+    with st.chat_message("assistant", avatar="🤖"):
         placeholder = st.empty()
 
         system_msg = {
